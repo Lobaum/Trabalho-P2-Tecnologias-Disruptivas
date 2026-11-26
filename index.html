@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas das Nuvens | Guia Atmosférico Estático</title>
+  <meta
+    name="description"
+    content="Site estático sobre nuvens e formação atmosférica com identificador interativo, catálogo por altitude e diário de observação."
+  />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/cloud.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Ir para o conteúdo principal</a>
+
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M6.657 18c-2.572 0 -4.657 -2.007 -4.657 -4.483c0 -2.475 2.085 -4.482 4.657 -4.482c.393 -1.762 1.794 -3.2 3.675 -3.773c1.88 -.572 3.956 -.193 5.444 1c1.488 1.19 2.162 3.007 1.77 4.769h.99c1.913 0 3.464 1.56 3.464 3.486c0 1.927 -1.551 3.487 -3.465 3.487h-11.878" />
+          </svg>
+        </span>
+        <span>Atlas das Nuvens</span>
+      </a>
+
+      <nav aria-label="Navegação principal">
+        <ul class="nav-links">
+          <li><a href="#tipos">Tipos</a></li>
+          <li><a href="#formacao">Formação</a></li>
+          <li><a href="#identificador">Identificador</a></li>
+          <li><a href="#diario">Diário</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button
+          id="theme-toggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Alternar tema"
+          title="Alternar tema"
+        >
+          <svg class="icon theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+          </svg>
+          <svg class="icon theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+          </svg>
+        </button>
+
+        <a class="btn btn-primary nav-cta" href="#diario">Registrar céu</a>
+
+        <button
+          id="mobile-menu-btn"
+          class="icon-btn mobile-menu-btn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="mobile-drawer"
+          aria-label="Abrir menu"
+        >
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M4 6l16 0" />
+            <path d="M4 12l16 0" />
+            <path d="M4 18l16 0" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer" hidden>
+    <a href="#tipos">Tipos de nuvens</a>
+    <a href="#formacao">Como se formam</a>
+    <a href="#identificador">Identificador</a>
+    <a href="#diario">Registrar céu</a>
+  </div>
+
+  <main id="conteudo-principal">
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Nefologia e Atmosfera</span>
+          <h1 class="hero-title">Como ler as nuvens e entender o tempo no céu.</h1>
+          <p class="hero-lead">
+            Explore os principais gêneros de nuvens, suas camadas de altitude e os sinais que cada formação traz.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#tipos">
+              <span>Explorar catálogo</span>
+              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M17 7l-10 10" />
+                <path d="M8 7l9 0l0 9" />
+              </svg>
+            </a>
+            <a class="btn btn-secondary" href="#identificador">Identificar no céu</a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <img
+            src="assets/images/hero-nuvens.jpg"
+            alt="Nuvens cumulus brancas e cirrus fibrosas atravessando um céu azul profundo sobre montanhas"
+            width="1200"
+            height="900"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Catálogo das Nuvens -->
+    <section id="tipos" class="section section-subtle">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Classificação OMM</span>
+          <h2 class="section-title">Principais gêneros por altitude</h2>
+          <p class="section-desc">
+            Filtre pela faixa atmosférica para comparar formato, composição e condições de tempo associadas.
+          </p>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filtrar nuvens por altitude">
+          <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">Todas</button>
+          <button class="filter-btn" type="button" data-filter="baixa" aria-pressed="false">Baixas</button>
+          <button class="filter-btn" type="button" data-filter="media" aria-pressed="false">Médias</button>
+          <button class="filter-btn" type="button" data-filter="alta" aria-pressed="false">Altas</button>
+          <button class="filter-btn" type="button" data-filter="vertical" aria-pressed="false">Verticais</button>
+        </div>
+
+        <div id="clouds-grid" class="clouds-grid">
+          <article class="cloud-card cloud-card--featured reveal" data-layer="vertical">
+            <div class="cloud-media">
+              <img
+                src="assets/images/nuvem-cumulonimbus.jpg"
+                alt="Grande nuvem cumulonimbus com topo em bigorna iluminada ao entardecer sobre campo aberto"
+                width="1280"
+                height="720"
+              />
+            </div>
+
+            <div class="cloud-body">
+              <div class="cloud-top">
+                <span class="cloud-layer">Desenvolvimento vertical</span>
+                <span class="cloud-alt">800 m a 12+ km</span>
+              </div>
+              <h3>Cumulonimbus (Cb)</h3>
+              <p>
+                Torre convectiva imponente capaz de atravessar toda a troposfera até formar uma bigorna de gelo no topo, gerando tempestades e raios.
+              </p>
+
+              <div class="specs-row">
+                <span class="spec-pill">Água e gelo</span>
+                <span class="spec-pill">Tempestades</span>
+                <span class="spec-pill">Topo em bigorna</span>
+              </div>
+
+              <div class="cloud-footer">
+                <button class="btn btn-primary" type="button" data-open-cloud="cumulonimbus">
+                  <span>Ver ficha técnica</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cloud-card cloud-card--wide reveal" data-layer="baixa">
+            <div class="cloud-media">
+              <img
+                src="assets/images/nuvem-cumulus.jpg"
+                alt="Nuvens cumulus brancas com base reta e topo arredondado sobre colinas verdes"
+                width="1280"
+                height="720"
+              />
+            </div>
+
+            <div class="cloud-body">
+              <div class="cloud-top">
+                <span class="cloud-layer">Andar baixo</span>
+                <span class="cloud-alt">600 m a 2 km</span>
+              </div>
+              <h3>Cumulus (Cu)</h3>
+              <p>
+                Nuvens isoladas com contornos bem definidos e base plana, formadas pela subida de ar aquecido em dias claros.
+              </p>
+              <div class="specs-row">
+                <span class="spec-pill">Gotículas líquidas</span>
+                <span class="spec-pill">Bom tempo</span>
+              </div>
+              <div class="cloud-footer">
+                <button class="btn btn-secondary" type="button" data-open-cloud="cumulus">
+                  <span>Ver ficha técnica</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cloud-card cloud-card--compact reveal" data-layer="alta">
+            <div class="cloud-media">
+              <img
+                src="assets/images/nuvem-cirrus.jpg"
+                alt="Filamentos brancos e finos de nuvens cirrus cortando o céu azul sobre montanhas"
+                width="1280"
+                height="853"
+              />
+            </div>
+
+            <div class="cloud-body">
+              <div class="cloud-top">
+                <span class="cloud-layer">Andar alto</span>
+                <span class="cloud-alt">6 km a 12 km</span>
+              </div>
+              <h3>Cirrus (Ci)</h3>
+              <p>
+                Trilhas delicadas de cristais de gelo moldadas por ventos intensos no alto da troposfera, sem gerar chuva no solo.
+              </p>
+              <div class="specs-row">
+                <span class="spec-pill">Cristais de gelo</span>
+                <span class="spec-pill">Sem chuva</span>
+              </div>
+              <div class="cloud-footer">
+                <button class="btn btn-secondary" type="button" data-open-cloud="cirrus">
+                  <span>Ver ficha técnica</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cloud-card cloud-card--wide reveal" data-layer="media">
+            <div class="cloud-media">
+              <img
+                src="assets/images/nuvem-altocumulus.jpg"
+                alt="Camada de nuvens altocumulus em pequenos flocos brancos agrupados no céu"
+                width="1280"
+                height="853"
+              />
+            </div>
+
+            <div class="cloud-body">
+              <div class="cloud-top">
+                <span class="cloud-layer">Andar médio</span>
+                <span class="cloud-alt">2 km a 6 km</span>
+              </div>
+              <h3>Altocumulus (Ac)</h3>
+              <p>
+                Lençóis ondulados compostos por dezenas de pequenos flocos ou placas com sombras discretas entre si.
+              </p>
+              <div class="specs-row">
+                <span class="spec-pill">Super-resfriadas</span>
+                <span class="spec-pill">Céu em ondas</span>
+              </div>
+              <div class="cloud-footer">
+                <button class="btn btn-secondary" type="button" data-open-cloud="altocumulus">
+                  <span>Ver ficha técnica</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="cloud-card cloud-card--compact cloud-card--guide reveal" data-layer="baixa media alta vertical">
+            <div class="cloud-body">
+              <span class="cloud-layer">Guia rápido</span>
+              <h3>Viu outro formato agora pela janela?</h3>
+              <p>
+                Nem toda nuvem aparece isolada. Stratus, Nimbostratus e Cirrostratus formam véus ou lençóis contínuos que mudam a luz do dia. Use o identificador abaixo para descobrir o gênero mais provável.
+              </p>
+              <div class="cloud-footer">
+                <a class="btn btn-primary" href="#identificador">Identificar no céu</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Como se formam (Asymmetric Bento Grid) -->
+    <section id="formacao" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Como uma nuvem nasce e muda de forma</h2>
+          <p class="section-desc">
+            Embora pareçam leves, as nuvens concentram toneladas de água suspensa em gotículas microscópicas e cristais de gelo.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <article class="bento-card bento-span-7 reveal">
+            <div>
+              <h3>Resfriamento e condensação na troposfera</h3>
+              <p>
+                O calor do Sol evapora água dos oceanos, rios e vegetação. Quando esse ar úmido sobe e encontra pressões menores, ele se expande e esfria até atingir o ponto de orvalho, condensando o vapor em torno de minúsculas partículas de poeira ou sal marinho.
+              </p>
+            </div>
+            <div class="specs-row">
+              <span class="spec-pill">Evaporação</span>
+              <span class="spec-pill">Ascensão convectiva</span>
+              <span class="spec-pill">Núcleos de condensação</span>
+            </div>
+          </article>
+
+          <article class="bento-card bento-card--tint bento-span-5 reveal">
+            <div>
+              <h3>Água líquida ou gelo</h3>
+              <p>Alterne entre as duas fases físicas predominantes na atmosfera.</p>
+            </div>
+
+            <div class="phase-switch" role="group" aria-label="Alternar composição da nuvem">
+              <button class="phase-btn" type="button" data-phase="water" aria-pressed="true">Gotículas</button>
+              <button class="phase-btn" type="button" data-phase="ice" aria-pressed="false">Cristais de gelo</button>
+            </div>
+
+            <div class="phase-box" aria-live="polite">
+              <strong id="phase-title">Gotículas líquidas (baixas e médias altitudes)</strong>
+              <span id="phase-text">Formam nuvens densas e de contornos nítidos como Cumulus, Stratus e Altocumulus, refletindo bastante luz solar.</span>
+            </div>
+          </article>
+
+          <article class="bento-card bento-card--pattern bento-span-5 reveal">
+            <div>
+              <h3>Três pistas ao observar</h3>
+              <p>Detalhes visuais que facilitam classificar qualquer formação sem instrumentos.</p>
+            </div>
+
+            <ul class="check-points">
+              <li>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M5 12l5 5l10 -10" />
+                </svg>
+                <span>Bordas nítidas indicam gotículas; bordas esfiapadas apontam gelo</span>
+              </li>
+              <li>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M5 12l5 5l10 -10" />
+                </svg>
+                <span>Bases escuras mostram maior espessura vertical bloqueando a luz</span>
+              </li>
+              <li>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M5 12l5 5l10 -10" />
+                </svg>
+                <span>Anel luminoso ao redor do Sol revela véu alto de Cirrostratus</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="bento-card bento-card--dark bento-span-7 reveal">
+            <div>
+              <h3>Os quatro andares atmosféricos</h3>
+              <p>Os nomes em latim combinam o formato (cumulus, stratus, cirrus) com prefixos de altitude (alto, nimbo).</p>
+            </div>
+
+            <div class="layers-grid">
+              <div class="layer-tile">
+                <strong>Andar baixo (até 2 km)</strong>
+                <span>Cumulus, Stratus e Stratocumulus próximos à superfície.</span>
+              </div>
+              <div class="layer-tile">
+                <strong>Andar médio (2 km a 6 km)</strong>
+                <span>Altocumulus e Altostratus com gotículas super-resfriadas.</span>
+              </div>
+              <div class="layer-tile">
+                <strong>Andar alto (6 km a 12 km)</strong>
+                <span>Cirrus, Cirrocumulus e Cirrostratus feitos de gelo.</span>
+              </div>
+              <div class="layer-tile">
+                <strong>Crescimento vertical</strong>
+                <span>Cumulonimbus e Nimbostratus atravessando várias camadas.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Identificador Rápido -->
+    <section id="identificador" class="section section-subtle">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Identificador rápido de nuvens</h2>
+          <p class="section-desc">
+            Combine altura aparente, formato predominante e sinais visuais para estimar o gênero presente no céu.
+          </p>
+        </div>
+
+        <div class="id-wrapper">
+          <div class="id-card reveal">
+            <div class="id-controls">
+              <div class="field">
+                <label for="id-altitude">Altura aparente</label>
+                <select id="id-altitude">
+                  <option value="baixa">Baixa e próxima do horizonte (até 2 km)</option>
+                  <option value="media">Camada intermediária (2 km a 6 km)</option>
+                  <option value="alta">Muito alta, fina e brilhante (acima de 6 km)</option>
+                  <option value="vertical">Base baixa crescendo em torre alta</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="id-shape">Formato principal</label>
+                <select id="id-shape">
+                  <option value="fofa">Fofa em flocos ou montes definidos</option>
+                  <option value="lencol">Lençol ou manto contínuo acinzentado</option>
+                  <option value="fios">Fios soltos parecendo penas ou pinceladas</option>
+                  <option value="veu">Véu fino e esbranquiçado cobrindo o céu</option>
+                  <option value="torre">Coluna escura com topo espalhado</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="id-signal">Sinal visual extra</label>
+                <select id="id-signal">
+                  <option value="azul">Céu azul visível entre as nuvens</option>
+                  <option value="chuva">Chuva contínua ou garoa persistente</option>
+                  <option value="halo">Anel luminoso (halo) ao redor do Sol</option>
+                  <option value="trovoada">Base muito escura, vento forte ou raios</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="id-result-card reveal" aria-live="polite">
+            <div>
+              <span class="id-genus-label">Gênero mais provável</span>
+              <h3 id="id-genus-name" class="id-genus-name">Cumulus (Cu)</h3>
+              <p id="id-genus-desc" class="id-genus-desc">
+                Nuvens isoladas com base plana e topo em couve-flor, comuns em dias ensolarados com correntes térmicas.
+              </p>
+            </div>
+
+            <dl class="id-metrics">
+              <div class="id-metric">
+                <dt>Altitude típica</dt>
+                <dd id="id-out-altitude">600 m a 2.000 m</dd>
+              </div>
+              <div class="id-metric">
+                <dt>Condição associada</dt>
+                <dd id="id-out-weather">Bom tempo (Cumulus humilis)</dd>
+              </div>
+            </dl>
+
+            <div>
+              <button id="id-use-btn" class="btn btn-primary" type="button">
+                <span>Levar para o diário do céu</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Diário de Observação & Container Info -->
+    <section id="diario" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Diário de observação do céu</h2>
+          <p class="section-desc">
+            Anote o que você avistou hoje. Os registros ficam disponíveis na sessão atual do navegador.
+          </p>
+        </div>
+
+        <div class="log-grid">
+          <div class="log-card reveal">
+            <h3>Registrar observação</h3>
+            <form id="obs-form" class="form-stack" novalidate>
+              <div class="field">
+                <label for="obs-place">Local ou bairro</label>
+                <input
+                  id="obs-place"
+                  name="place"
+                  type="text"
+                  placeholder="Ex.: Parque Municipal ou Varanda de casa"
+                  aria-describedby="place-hint place-error"
+                  required
+                />
+                <p id="place-hint" class="field-hint">Informe pelo menos 2 caracteres.</p>
+                <p id="place-error" class="field-error" hidden>Digite um local válido com no mínimo 2 caracteres.</p>
+              </div>
+
+              <div class="field">
+                <label for="obs-cloud">Tipo observado</label>
+                <select id="obs-cloud" name="cloud">
+                  <option value="Cumulus (Cu)">Cumulus (Cu)</option>
+                  <option value="Cumulonimbus (Cb)">Cumulonimbus (Cb)</option>
+                  <option value="Cirrus (Ci)">Cirrus (Ci)</option>
+                  <option value="Altocumulus (Ac)">Altocumulus (Ac)</option>
+                  <option value="Stratus (St)">Stratus (St)</option>
+                  <option value="Cirrostratus (Cs)">Cirrostratus (Cs)</option>
+                  <option value="Altostratus / Nimbostratus">Altostratus / Nimbostratus</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="obs-notes">Descrição do céu</label>
+                <textarea
+                  id="obs-notes"
+                  name="notes"
+                  rows="3"
+                  placeholder="Descreva cor, direção do vento, iluminação ou mudança de tempo..."
+                  aria-describedby="notes-hint notes-error"
+                  required
+                ></textarea>
+                <p id="notes-hint" class="field-hint">Processamento local em JavaScript, sem envio de dados externos.</p>
+                <p id="notes-error" class="field-error" hidden>Escreva uma descrição com pelo menos 8 caracteres.</p>
+              </div>
+
+              <div>
+                <button class="btn btn-primary" type="submit">
+                  <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M5 12l5 5l10 -10" />
+                  </svg>
+                  <span>Salvar no diário</span>
+                </button>
+              </div>
+
+              <div id="form-feedback" class="form-feedback" role="status" aria-live="polite" hidden></div>
+            </form>
+
+            <div id="saved-logs" class="saved-logs" aria-live="polite"></div>
+          </div>
+
+          <aside class="info-card reveal" aria-label="Referência rápida e ambiente Docker">
+            <h3>Ambiente do trabalho P2</h3>
+            <dl class="info-list">
+              <div class="info-item">
+                <dt>Base de classificação</dt>
+                <dd>Atlas Internacional de Nuvens (OMM)</dd>
+              </div>
+              <div class="info-item">
+                <dt>Endereço ativo no navegador</dt>
+                <dd id="runtime-origin">http://localhost:8080</dd>
+              </div>
+              <div class="info-item">
+                <dt>Servidor em container</dt>
+                <dd>Nginx Alpine (nginx:1.27-alpine) na porta 8080:80</dd>
+              </div>
+              <div class="info-item">
+                <dt>Conteúdo servido</dt>
+                <dd>HTML5, CSS3, JavaScript, fontes WOFF2 e fotos locais</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Atlas das Nuvens. Trabalho P2 em Docker e Nginx por Pedro Henrique (@Lobaum).</p>
+      <p>Desenvolvido com apoio da LLM Google Gemini.</p>
+    </div>
+  </footer>
+
+  <!-- Cloud Details Modal -->
+  <div
+    id="cloud-modal"
+    class="modal-backdrop"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    hidden
+  >
+    <div class="modal-dialog">
+      <div class="modal-head">
+        <h3 id="modal-title">Ficha técnica</h3>
+        <button id="modal-close-btn" class="icon-btn" type="button" aria-label="Fechar janela">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p id="modal-meta" class="modal-meta"></p>
+        <p id="modal-summary"></p>
+        <ul id="modal-facts" class="modal-notes"></ul>
+
+        <div class="modal-actions">
+          <button id="modal-log-btn" class="btn btn-primary" type="button">
+            <span>Registrar este tipo no diário</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
